@@ -33,11 +33,14 @@ services:
         RELEASE_VERSION: 8.0.1
     links:
       - db:database
+    env_file:
+      - ./envs/common-blockscout.env
+      - ./envs/common-frontend.env
     environment:
-        ETHEREUM_JSONRPC_HTTP_URL: http://host.docker.internal:8545/
-        ETHEREUM_JSONRPC_TRACE_URL: http://host.docker.internal:8545/
-        ETHEREUM_JSONRPC_WS_URL: ws://host.docker.internal:8545/
-        CHAIN_ID: '1337'
+      - ETHEREUM_JSONRPC_HTTP_URL=http://13.49.46.28:8545
+      - ETHEREUM_JSONRPC_TRACE_URL=http://13.49.46.28:8545
+      - ETHEREUM_JSONRPC_WS_URL=http://13.49.46.28:8545
+      - CHAIN_ID=42025
 
   nft_media_handler:
     depends_on:
