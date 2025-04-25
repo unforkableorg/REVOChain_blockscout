@@ -101,6 +101,7 @@ services:
       service: user-ops-indexer
 
   proxy:
+
     depends_on:
       - backend
       - frontend
@@ -108,3 +109,5 @@ services:
     extends:
       file: ./services/nginx.yml
       service: proxy
+    ports:
+      - "80:80"
